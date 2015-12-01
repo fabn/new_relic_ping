@@ -17,12 +17,16 @@ Usage
 
 Add this to your Gemfile
 
-    gem 'new_relic_ping'
+```ruby
+gem 'new_relic_ping'
+```
 
 This enables two URL's (they are automatically appended in the existing routeset)
 
-    /heartbeat
-    /heartbeat/health
+```
+/heartbeat
+/heartbeat/health
+```
 
 heartbeat will respond with the text OK, and status 200 when your rails server is available.
 The health action is to allow more deep monitoring of the health of your service. You can configure
@@ -35,46 +39,45 @@ Routes handling
 By default this gem appends the above routes in your current routeset, if you need to customize them you can use
 the following methods available via configuration methods (for instance in an initializer) 
 
-
-    # config/initializers/newrelic_ping.rb
-    NewRelicPing.configure do |c|
-      # Customize where the engine is mounted, default is `/heartbeat`
-      c.mount_on '/whatever'
-      # Customize where the route is mounted
-      c.append_route!   # default if not specified
-      c.prepend_route!  # to prepend the engine route
-      c.dont_mount!     # if you want to manually mount the route in whatever position
-    end
+```ruby
+# config/initializers/newrelic_ping.rb
+NewRelicPing.configure do |c|
+  # Customize where the engine is mounted, default is `/heartbeat`
+  c.mount_on '/whatever'
+  # Customize where the route is mounted
+  c.append_route!   # default if not specified
+  c.prepend_route!  # to prepend the engine route
+  c.dont_mount!     # if you want to manually mount the route in whatever position
+end
+```
     
 In the last case you have to mount the route by yourself by using a line like this in your app `routes.rb`
 
-    mount NewRelicPing::Engine => '/whatever-path-you-want'
+```ruby
+mount NewRelicPing::Engine => '/whatever-path-you-want'
+```
     
 This can be useful if you need to apply some route constraint or if you want to protect the route in some way.
 
 Configuring monitoring checks
 -----------------------------
 
-Configure a block to run checks monitoring services you are dependent on, e.g. :
+Configure a block to run checks monitoring services you are dependent on, e.g.:
 
-application.rb
-
-    ...
-    class Application < Rails::Application
-
-      NewRelicPing.configure do |c|
-        # This database check is defined for you by default if you're using ActiveRecord
-        # though you can override it by redefining it in your configuration
-        c.monitor('database') do
-          ActiveRecord::Base.connection.execute("select count(*) from schema_migrations")
-        end
-        c.monitor('redis') do
-          # Block return value is ignored, you must raise to fail a check
-          raise 'Redis ping failed' unless 'PONG' == Redis.client.ping
-        end
-      end
-    ...
-
+```ruby
+# in config/initializers/heartbeat.rb
+NewRelicPing.configure do |c|
+  # This database check is defined for you by default if you're using ActiveRecord
+  # though you can override it by redefining it in your configuration
+  c.monitor('database') do
+    ActiveRecord::Base.connection.execute("select count(*) from schema_migrations")
+  end
+  c.monitor('redis') do
+    # Block return value is ignored, you must raise to fail a check
+    raise 'Redis ping failed' unless 'PONG' == Redis.client.ping
+  end
+end
+```
 
 These blocks will be executed when the /health action is called, and the additional information set in the HTTP headers of the request.
 `X-{service}-Response` will be set to the return value of the block, `X-{Service}-Time` will show the execution time of the given block: "X.XXXXXX seconds".
@@ -85,14 +88,10 @@ if the block raises an exception.
 You can now configure any monitoring/alerting tools that you use, such as pingdom, or new relic to 'ping' this url,
 checking if your application is alive.
 
-    curl -v http://localhost:3000/heartbeat
-    curl -v http://localhost:3000/heartbeat/health
-
-Planned Features
-================
-
-* Capistrano integration for enabling/disabling new relic pinging during deploys
-* suggestions welcome
+```
+curl -v http://localhost:3000/heartbeat
+curl -v http://localhost:3000/heartbeat/health
+```
 
 Contributing to NewRelicPing
 ----------------------------
