@@ -1,4 +1,4 @@
-module NewRelicPing
+module HeartbeatRails
   class Configuration
 
     # Default mountpoint for engine
