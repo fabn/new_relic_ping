@@ -2,7 +2,7 @@
 
 This file is used to list changes made in each version of heartbeat_rails.
 
-## Master branch
+## 1.0.0: (2015-12-02)
 
 * Removed unused files/modules/views etc.
 * Automatically mount the engine at `heartbeat` endpoint (`status` is too common as word).
@@ -12,7 +12,6 @@ This file is used to list changes made in each version of heartbeat_rails.
   otherwise they improve your apdex with no reason to do that.
 * Changed the default database check to use [default active record implementation](https://github.com/rails/rails/blob/3e36db4406beea32772b1db1e9a16cc1e8aea14c/activerecord/lib/active_record/connection_adapters/mysql2_adapter.rb#L72)
  which perform better and save some resources on busiest MySQL servers.That method is defined for each supported AR adapter.
-
 
 ## 0.1.2: (2014-02-03)
 

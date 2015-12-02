@@ -1,7 +1,7 @@
 HeartbeatRails
 ============
 
-[![Gem Version](https://badge.fury.io/rb/heartbeat_rails.png)](http://badge.fury.io/rb/heartbeat_rails) Latest public release
+[![Gem Version](https://badge.fury.io/rb/heartbeat_rails.png)](http://badge.fury.io/rb/heartbeat_rails)
 [![Build Status](https://travis-ci.org/fabn/heartbeat_rails.png?branch=master)](https://travis-ci.org/fabn/heartbeat_rails)
 
 Add a URL to your rails application to respond to ping requests from NewRelic (and other services).
