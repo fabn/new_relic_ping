@@ -6,22 +6,9 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
-  gem 'coveralls', :require => false
   gem 'pry'
-
   # for CRuby, Rubinius, including Windows and RubyInstaller
   gem 'sqlite3', :platform => [:ruby, :mswin, :mingw]
-
-  # JRuby support
-  gem 'jdbc-sqlite3', :platform => :jruby
-  gem 'activerecord-jdbcsqlite3-adapter', :platform => :jruby
-
-  # Rubinius support
-  platforms :rbx do
-    gem 'racc'
-    gem 'rubysl', '~> 2.0'
-    gem 'psych'
-  end
 end
 
 # jquery-rails is used by the dummy application
