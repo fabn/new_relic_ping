@@ -1,3 +1,5 @@
+require 'benchmark'
+
 module HeartbeatRails
   class Configuration
 
@@ -82,7 +84,7 @@ module HeartbeatRails
       responses = {}
       begin
         @monitors.each do |label, mon|
-          time = Benchmark.realtime do
+          time = ::Benchmark.realtime do
             responses["#{label}_response"] = (mon.call).to_s
           end
           responses["#{label}_time"] = "#{time.inspect} seconds"
