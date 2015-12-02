@@ -1,6 +1,4 @@
-require_dependency 'new_relic_ping/application_controller'
-
-module NewRelicPing
+module HeartbeatRails
   class HealthController < ApplicationController
 
     # Don't include these actions as transactions in newrelic reports
@@ -37,7 +35,7 @@ module NewRelicPing
     end
 
     def configuration
-      NewRelicPing.config
+      HeartbeatRails.config
     end
 
   end

@@ -7,7 +7,7 @@ module HeartbeatRails
     initializer 'heartbeat_rails.add_routes' do
       if HeartbeatRails.config.automount?
         Rails.logger.debug do
-          "Mounting NewRelicPing::Engine at #{HeartbeatRails.config.mountpoint} with mode #{HeartbeatRails.config.route_method}"
+          "Mounting HeartbeatRails::Engine at #{HeartbeatRails.config.mountpoint} with mode #{HeartbeatRails.config.route_method}"
         end
         Rails.application.routes.public_send(HeartbeatRails.config.route_method) do
           mount HeartbeatRails::Engine => HeartbeatRails.config.mountpoint

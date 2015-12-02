@@ -1,5 +1,3 @@
-require 'spec_helper'
-
 RSpec.describe HeartbeatRails::Configuration do
 
   # Clear out any previous settings

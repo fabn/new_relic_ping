@@ -1,4 +1,4 @@
-NewRelicPing::Engine.routes.draw do
+HeartbeatRails::Engine.routes.draw do
   get '/'       => 'health#ping'
   get '/health' => 'health#health'
 end
