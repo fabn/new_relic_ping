@@ -1,10 +1,8 @@
-NewRelicPing
+HeartbeatRails
 ============
 
-[![Gem Version](https://badge.fury.io/rb/new_relic_ping.png)](http://badge.fury.io/rb/new_relic_ping) Latest public release
-
-[![Build Status](https://travis-ci.org/jeremyolliver/new_relic_ping.png?branch=master)](https://travis-ci.org/jeremyolliver/new_relic_ping) [![Coverage Status](https://coveralls.io/repos/jeremyolliver/new_relic_ping/badge.png?branch=master)](https://coveralls.io/r/jeremyolliver/new_relic_ping)
- [![Code Climate](https://codeclimate.com/github/jeremyolliver/new_relic_ping.png)](https://codeclimate.com/github/jeremyolliver/new_relic_ping) Master branch status
+[![Gem Version](https://badge.fury.io/rb/heartbeat_rails.png)](http://badge.fury.io/rb/heartbeat_rails) Latest public release
+[![Build Status](https://travis-ci.org/fabn/heartbeat_rails.png?branch=master)](https://travis-ci.org/fabn/heartbeat_rails)
 
 Add a URL to your rails application to respond to ping requests from NewRelic (and other services).
 This is something that we've found we often implement. While you can often simply call the root URL
@@ -18,7 +16,7 @@ Usage
 Add this to your Gemfile
 
 ```ruby
-gem 'new_relic_ping'
+gem 'heartbeat_rails'
 ```
 
 This enables two URL's (they are automatically appended in the existing routeset)
@@ -40,8 +38,8 @@ By default this gem appends the above routes in your current routeset, if you ne
 the following methods available via configuration methods (for instance in an initializer) 
 
 ```ruby
-# config/initializers/newrelic_ping.rb
-NewRelicPing.configure do |c|
+# config/initializers/heartbeat.rb
+HeartbeatRails.configure do |c|
   # Customize where the engine is mounted, default is `/heartbeat`
   c.mount_on '/whatever'
   # Customize where the route is mounted
@@ -51,10 +49,10 @@ NewRelicPing.configure do |c|
 end
 ```
     
-In the last case you have to mount the route by yourself by using a line like this in your app `routes.rb`
+In the latter case you have to mount the route by yourself by using a line like this in your app `routes.rb`
 
 ```ruby
-mount NewRelicPing::Engine => '/whatever-path-you-want'
+mount HeartbeatRails::Engine => '/whatever-path-you-want'
 ```
     
 This can be useful if you need to apply some route constraint or if you want to protect the route in some way.
@@ -66,7 +64,7 @@ Configure a block to run checks monitoring services you are dependent on, e.g.:
 
 ```ruby
 # in config/initializers/heartbeat.rb
-NewRelicPing.configure do |c|
+HeartbeatRails.configure do |c|
   # This database check is defined for you by default if you're using ActiveRecord
   # though you can override it by redefining it in your configuration
   c.monitor('database') do
@@ -93,8 +91,8 @@ curl -v http://localhost:3000/heartbeat
 curl -v http://localhost:3000/heartbeat/health
 ```
 
-Contributing to NewRelicPing
-----------------------------
+Contributing to HeartbeatRails
+------------------------------
 
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
@@ -104,5 +102,10 @@ Contributing to NewRelicPing
 * Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
 * Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
 
+Credits
+-------
+
+This is a fork of the original work made by [Jeremy Olliver](https://github.com/jeremyolliver/new_relic_ping).
+
 - - -
-Copyright (c) 2013 Jeremy Olliver, released under the MIT license
+Copyright (c) 2013 Jeremy Olliver, (c) 2015 Fabio Napoleoni. Released under the MIT license

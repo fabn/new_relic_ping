@@ -1,6 +1,18 @@
-# CHANGELOG for new\_relic\_ping
+# CHANGELOG for heartbeat_rails
 
-This file is used to list changes made in each version of new\_relic\_ping.
+This file is used to list changes made in each version of heartbeat_rails.
+
+## Master branch
+
+* Removed unused files/modules/views etc.
+* Automatically mount the engine at `heartbeat` endpoint (`status` is too common as word).
+* Configurable endpoint, one can change the endpoint, append it, prepend it or disable automounting using configuration methods.
+* Simplified routes, only `/heartbeat` and `/heartbeat/health` available (removed the `ping` suffix).
+* Added a `newrelic_ignore` call in the `HealthController`, heartbeat checks should not be reported as newrelic transactions
+  otherwise they improve your apdex with no reason to do that.
+* Changed the default database check to use [default active record implementation](https://github.com/rails/rails/blob/3e36db4406beea32772b1db1e9a16cc1e8aea14c/activerecord/lib/active_record/connection_adapters/mysql2_adapter.rb#L72)
+ which perform better and save some resources on busiest MySQL servers.That method is defined for each supported AR adapter.
+
 
 ## 0.1.2: (2014-02-03)
 
