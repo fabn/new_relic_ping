@@ -18,3 +18,6 @@ spec/examples.txt
 # RVM files
 .ruby-gemset
 .ruby-version
+
+# Appraisal lockfiles
+gemfiles/*.lock
