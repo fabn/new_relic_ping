@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of heartbeat_rails.
 
+## 1.1.0: (2017-11-13)
+
+* Full compatibility with rails 5.1
+* Test in travis against all supported rails versions.
+
 ## 1.0.0: (2015-12-02)
 
 * Removed unused files/modules/views etc.
