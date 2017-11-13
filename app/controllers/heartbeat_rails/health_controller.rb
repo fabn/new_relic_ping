@@ -20,7 +20,7 @@ module HeartbeatRails
 
     def send_response(status_msg, meta_info = {})
       write_headers(meta_info)
-      render :text => status_msg.to_s, :status => status_msg, :content_type => Mime::TEXT
+      render plain: status_msg.to_s, status: status_msg
     end
 
     def write_headers(values = {})
