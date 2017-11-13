@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Relaxed version constraint, we don't want to be a barrier to upgrading
-  spec.add_dependency 'rails', '>= 3.2'
+  spec.add_dependency 'rails', '>= 3.2', '< 5'
 
   spec.add_development_dependency 'bundler', '~> 1.10'
   spec.add_development_dependency 'rake', '~> 10.0'
