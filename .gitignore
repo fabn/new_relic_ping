@@ -11,3 +11,6 @@ Gemfile.lock
 
 # RSpec failed examples
 spec/examples.txt
+
+# IDE files
+.idea/
