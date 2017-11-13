@@ -1,3 +1,3 @@
 module HeartbeatRails
-  VERSION = '1.0.0'
+  VERSION = File.read(File.expand_path('../../../VERSION', __FILE__)).sub(/^v/, '')
 end
