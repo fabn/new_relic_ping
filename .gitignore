@@ -11,3 +11,13 @@ Gemfile.lock
 
 # RSpec failed examples
 spec/examples.txt
+
+# IDE files
+.idea/
+
+# RVM files
+.ruby-gemset
+.ruby-version
+
+# Appraisal lockfiles
+gemfiles/*.lock

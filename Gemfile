@@ -6,7 +6,9 @@ source 'https://rubygems.org'
 gemspec
 
 group :development, :test do
+  gem 'appraisal'
   gem 'pry'
+  gem 'listen'
   # for CRuby, Rubinius, including Windows and RubyInstaller
   gem 'sqlite3', :platform => [:ruby, :mswin, :mingw]
 end
